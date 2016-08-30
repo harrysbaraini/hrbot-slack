@@ -30,7 +30,7 @@ module.exports = function() {
 
   // SlackBot
   var bot = new SlackBot({
-    token: 'xoxb-74579415286-ia8qMSUGOhq8rUiWwbJ7OUJy',
+    token: process.env.SLACK_TOKEN,
     name: 'hrbot'
   });
 
