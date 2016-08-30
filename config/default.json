@@ -1,0 +1,12 @@
+{
+  "host": "hrbot-slack.herokuapp.com",
+  "port": 3030,
+  "mongodb": "mongodb://harrysbaraini:awesomebot@ds019816.mlab.com:19816/hrbot",
+  "public": "../public/",
+  "auth": {
+    "token": {
+      "secret": "Mh/rNP9bofgwM7qj1+2KgDOUnX+L1CZpLplrpew6iYbyud0V7F9D7g8Qjvm5JOtrgYXOIRG+FDAe+LlqxCpcCg=="
+    },
+    "local": {}
+  }
+}
