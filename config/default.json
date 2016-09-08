@@ -1,7 +1,7 @@
 {
-  "host": "hrbot-slack.herokuapp.com",
+  "host": "127.0.0.1",
   "port": 3030,
-  "mongodb": "mongodb://harrysbaraini:awesomebot@ds019816.mlab.com:19816/hrbot",
+  "mongodb": "127.0.0.1:27017/hrbot",
   "public": "../public/",
   "auth": {
     "token": {

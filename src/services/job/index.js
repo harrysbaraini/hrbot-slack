@@ -3,7 +3,7 @@
 const service = require('feathers-mongoose');
 const job = require('./job-model');
 const hooks = require('./hooks');
-const SlackBot = require('slackbots');
+const slack = require('../../slack');
 
 module.exports = function() {
   const app = this;
@@ -28,48 +28,6 @@ module.exports = function() {
   // Set up our after hooks
   jobService.after(hooks.after);
 
-  // SlackBot
-  var bot = new SlackBot({
-    token: process.env.SLACK_TOKEN,
-    name: 'hrbot'
-  });
-
-  bot.on('start', function() {
-    //
-  });
-
-  bot.on('message', function(data) {
-    const pattern = /^(<@.+>)(.+)&gt;(.+)&gt;(.+)$/;
-
-    if (data.text) {
-      const matches = data.text.match(pattern);
-
-      if (!matches) {
-        return;
-      }
-
-      const count = Object.keys(matches).length;
-      
-      if (count > 4) {
-        let job = '';
-        let company = '';
-        let description = '';
-
-        job = matches[2].trim();
-        company = matches[3].trim();
-        description = matches[4].trim();
-
-        // Model
-        const model = {
-          title: job,
-          company: company,
-          description: description
-        };
-
-        jobService.create(model).then(c => {
-          console.log('new job', c);
-        });
-      }
-    }
-  });
-};
+  // Set up Slack bot
+  slack(jobService);
+}
